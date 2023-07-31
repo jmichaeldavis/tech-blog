@@ -1,0 +1,18 @@
+[
+    {
+      "title": "Today was a good day",
+      "contents": "BELIEVE IT - Naruto",
+      "user_id": 1
+    },
+    {
+      "title": "Lorem Ipsum",
+      "contents": "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem.",
+      "user_id": 1
+    },    
+    {
+      "title": "This is a random Blog Post",
+      "contents": "I can't believe how random this post is. Super nuts. This is exactly why I don't write blog posts for fun.",
+      "user_id": 1
+    }
+  ]
+  

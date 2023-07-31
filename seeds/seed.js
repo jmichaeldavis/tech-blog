@@ -1,8 +1,8 @@
 const sequelize = require('../config/connection');
-const { User, Reminder } = require('../models');
+const { User, BlogPost } = require('../models');
 
 const userData = require('./userData.json');
-const reminderData = require('./reminderData.json');
+const postData = require('./postData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -12,9 +12,9 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  for (const reminder of reminderData) {
-    await Reminder.create({
-      ...reminder,
+  for (const post of postData) {
+    await BlogPost.create({
+      ...post,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }

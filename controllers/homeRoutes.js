@@ -7,25 +7,15 @@ router.get('/',
   withAuth,
   async (req, res) => {
     try {
-      const dbReminderData = await Reminder.findAll({
-        where: {
-          user_id: req.session.user_id
-        },
-        include: [
-          {
-            model: User,
-            attributes: ['name', 'email'],
-          },
-        ],
+      const dbBlogPostData = await BlogPost.findAll({
       });
 
-      const reminders = dbReminderData.map((reminder) =>
-        reminder.get({ plain: true }))
+      const blogPosts = dbBlogPostData.map((blogPost) =>
+        blogPost.get({ plain: true }))
 
       res.render('homepage', {
-        reminders,
+        blogPosts,
         user_name: req.session.user_name,
-        // Pass the logged in flag to the template
         logged_in: req.session.logged_in,
       });
     } catch (err) {
@@ -33,24 +23,23 @@ router.get('/',
     }
   });
 
-router.get('/reminder/:id', async (req, res) => {
+router.get('/blog-post/:id', async (req, res) => {
 
   try {
-    const dbOneReminderData = await Reminder.findOne({
+    const dbSingleBlogPostData = await BlogPost.findOne({
       where: {
-        user_id: req.session.user_id,
         id: req.params.id
       }
     });
 
-    if (!dbOneReminderData) {
-      // render homescreen if reminder is not found
+    if (!dbSingleBlogPostData) {
+      // render homescreen if blog post is not found
     }
 
     console.log(req.session);
-    const reminder = dbOneReminderData.get({ plain: true })
-    console.log(reminder);
-    res.render('reminder', { reminder, loggedIn: req.session.logged_in });
+    const blogPost = dbSingleBlogPostData.get({ plain: true })
+    console.log(blogPost);
+    res.render('blog-post', { blogPost, loggedIn: req.session.logged_in });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

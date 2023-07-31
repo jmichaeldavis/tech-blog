@@ -14,17 +14,16 @@
 
 <body>
   <header class="display-flex justify-space-between align-center p-2">
-    <h1>
-      Remind Me
-    </h1>
     {{#if logged_in}}
     <nav>
-      <p id="reminder-count">Total reminders: {{reminders.length}}</p>
-      <button class="btn align-right" id="logout">logout</button>
+      <a>Home</a>
+      <a>Dashboard</a>
+      <a>Logout</a>
     </nav>
-    <div class="form-group">
-    </div>
     {{/if}}
+    <div id="page-title-container">
+      <h1 id="page-title">{{user_name}}</h1>
+    </div>
   </header>
   <main class="container container-fluid mt-5">
     {{{ body }}}

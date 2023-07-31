@@ -1,0 +1,26 @@
+<div>
+  {{#if posts.length}}
+    <div class="blogpost-card-container">
+
+      {{#each posts as |posts|}}
+        <a class="blogpost-card" href="/blog-post/{{id}}">
+          <div class="blogpost-container">
+            <div>
+              <h5 class="blogpost-title">{{posts.title}}</h5>
+              <p class="blogpost-info">You posted this on
+                {{posts.date_created}}</p>
+            </div>
+            <p class="blogpost-description">{{posts.contents}}</p>
+          </div>
+        </a>
+      {{/each}}
+    </div>
+  {{/if}}
+  <div>
+    <button>
+      New Blog Post
+    </button>
+  </div>
+</div>
+
+<script src="/js/blogpost.js"></script>
