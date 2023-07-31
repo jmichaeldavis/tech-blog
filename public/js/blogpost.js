@@ -1,5 +1,5 @@
 const newBlogPostBtn = document.getElementById("new-blogpost-btn");
-const closeReminderBtn = document.getElementById("closeButton");
+const cancelBlogPostBtn = document.getElementById("cancel-blogpost-btn");
 const newBlogPostContainer = document.getElementById("new-blogpost-container")
 // const deleteBtn = document.getElementById("delete-btn");
 // const postId = deleteBtn.getAttribute('data-id');
@@ -49,22 +49,22 @@ function getSelectedCheckboxes() {
 }
 
 
-function hideNewReminderBtn() {
-  newReminderBtn.style.display = "none";
+function hideNewBlogPostBtn() {
+  newBlogPostBtn.style.display = "none";
 }
 
-function showNewReminderBtn() {
-  newReminderBtn.style.display = "block";
+function showNewBlogPostBtn() {
+  newBlogPostBtn.style.display = "block";
 }
 
 function openForm() {
-  document.getElementById("myReminder").style.display = "block";
-  hideNewReminderBtn();
+  newBlogPostContainer.style.display = "block";
+  hideNewBlogPostBtn();
 }
 
 function closeForm() {
-  document.getElementById("myReminder").style.display = "none";
-  showNewReminderBtn();
+  newBlogPostContainer.style.display = "none";
+  showNewBlogPostBtn();
 }
 
 function returnHomePage() {
@@ -72,7 +72,7 @@ function returnHomePage() {
   document.location.replace("/");
 }
 
-const deleteReminder = function () {
+const deleteBlogPost = function () {
   // fetch(`/api/reminders/${reminderId}`, {
     //     method: "DELETE",
     // })
@@ -108,9 +108,9 @@ const deleteReminder = function () {
       
       createReminder.addEventListener("click", getSelectedCheckboxes);
       
-      newReminderBtn.addEventListener("click", openForm);
+      newBlogPostBtn.addEventListener("click", openForm);
       
-      closeReminderBtn.addEventListener("click", closeForm);
+      cancelBlogPostBtn.addEventListener("click", closeForm);
       
       // deleteBtn.addEventListener("click", deleteReminder);
       // document.querySelector(".delete-btn").addEventListener("click", delButtonHandler);
