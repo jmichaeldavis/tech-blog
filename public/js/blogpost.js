@@ -1,8 +1,8 @@
-const createReminder = document.getElementById("create-reminder");
-const newReminderBtn = document.getElementById("addReminder");
+const newBlogPostBtn = document.getElementById("new-blogpost-btn");
 const closeReminderBtn = document.getElementById("closeButton");
+const newBlogPostContainer = document.getElementById("new-blogpost-container")
 // const deleteBtn = document.getElementById("delete-btn");
-// const reminderId = deleteBtn.getAttribute('data-id');
+// const postId = deleteBtn.getAttribute('data-id');
 // const addDeleteEvent = function (button) {
 //     for (var i = 0; i < button.length; i++) {
 //         button[i].addEventListener('click', deleteReminder,

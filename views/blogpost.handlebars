@@ -1,12 +1,12 @@
 {{#if loggedIn}}
 <button onclick="location.href = 'http://localhost:3001'" class="btn return-btn">Return</button>
-<section class="single-reminder">
-    <div class="painting-details">
-        <h3>{{reminder.task_title}}</h3>
-        <p class="single-reminder-description">{{reminder.task_description}}</p>
+<section class="single-blogpost">
+    <div class="blogpost-details">
+        <h3>{{post.title}}</h3>
+        <p class="single-blogpost-contents">{{post.contents}}</p>
     </div>
     <div>
-        <button class="delete-btn btn btn-danger" data-id="{{reminder.id}}">Delete</button>
+        <button class="delete-btn btn btn-danger" data-id="{{post.id}}">Delete</button>
     </div>
 </section>
 {{else}}
