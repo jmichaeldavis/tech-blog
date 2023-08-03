@@ -1,4 +1,5 @@
 const newBlogPostBtn = document.getElementById("new-blogpost-btn");
+const submitBlogPostBtn = document.getElementById("submit-blogpost-btn");
 const cancelBlogPostBtn = document.getElementById("cancel-blogpost-btn");
 const newBlogPostContainer = document.getElementById("new-blogpost-container")
 // const deleteBtn = document.getElementById("delete-btn");
@@ -10,30 +11,21 @@ const newBlogPostContainer = document.getElementById("new-blogpost-container")
 //     }
 // };
 
-function getSelectedCheckboxes() {
-  event.preventDefault();
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-  const selectedCheckboxes = [];
-  closeForm();
-  checkboxes.forEach(function (checkbox) {
-    selectedCheckboxes.push(checkbox.value);
-  });
-  const reminderTitle = document.getElementById("post-name").value.trim();
-  const reminderBody = document.getElementById("post-desc").value.trim();
-  const monthString = `${selectedCheckboxes}`;
+function  setBlogPostData() {
+  const blogPostTitle = document.getElementById("title-input").value
+  const blogPostContents = document.getElementById("contents-input").value
 
-  const reminderData = {
-    task_title: reminderTitle,
-    task_description: reminderBody,
-    months: monthString,
+  const blogpostData = {
+    title: blogPostTitle,
+    contents: blogPostContents,
   };
 
-  fetch("/api/reminders", {
+  fetch("/api/blog-post", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(reminderData),
+    body: JSON.stringify(blogpostData),
   })
     .then((response) => {
       document.location.replace("/");
@@ -42,7 +34,7 @@ function getSelectedCheckboxes() {
     .catch((error) => {
       console.error("Error:", error);
     });
-  console.log(reminderData);
+  console.log(blogpostData);
   showNewReminderBtn();
   window.location.reload();
   return;
@@ -73,7 +65,7 @@ function returnHomePage() {
 }
 
 const deleteBlogPost = function () {
-  // fetch(`/api/reminders/${reminderId}`, {
+  // fetch(`/api/blog-post/${postID}`, {
     //     method: "DELETE",
     // })
     //     .then((response) => {
@@ -94,19 +86,19 @@ const deleteBlogPost = function () {
         if (event.target.hasAttribute("data-id")) {
           const id = event.target.getAttribute("data-id");
       
-          const response = await fetch(`/api/reminders/${id}`, {
+          const response = await fetch(`/api/blog-post/${id}`, {
             method: "DELETE",
           });
       
           if (response.ok) {
             document.location.replace("/");
           } else {
-            alert("Failed to delete reminder");
+            alert("Failed to delete blog post");
           }
         }
       };
       
-      createReminder.addEventListener("click", getSelectedCheckboxes);
+      submitBlogPostBtn.addEventListener("click", setBlogPostData);
       
       newBlogPostBtn.addEventListener("click", openForm);
       

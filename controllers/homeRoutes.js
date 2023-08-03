@@ -23,6 +23,29 @@ router.get('/',
     }
   });
 
+  router.get('/blog-post/dashboard', async (req, res) => {
+
+    try {
+      const dbDashboardData = await BlogPost.findAll({
+        where: {
+          user_id : req.session.id
+        }
+      });
+  
+      if (!dbDashboardData) {
+        // render homescreen if blog post is not found
+      }
+  
+      console.log(req.session);
+      const dashboard = dbDashboardData.get({ plain: true })
+      console.log(dashboard);
+      res.render('dashboard', { dashboard, loggedIn: req.session.logged_in });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+
 router.get('/blog-post/:id', async (req, res) => {
 
   try {
