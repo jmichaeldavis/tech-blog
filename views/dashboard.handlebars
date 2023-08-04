@@ -1,16 +1,18 @@
 <div>
-  {{#if posts.length}}
+  <h2 id="dashboard-title">My Blog Posts</h2>
+  <button id="return-home-btn">Return Home</button>
+  {{#if myPosts.length}}
     <div class="blogpost-card-container">
 
-      {{#each posts as |posts|}}
+      {{#each myPosts as |myPosts|}}
         <a class="blogpost-card" href="/blog-post/{{id}}">
           <div class="blogpost-container">
             <div>
-              <h5 class="blogpost-title">{{posts.title}}</h5>
+              <h5 class="blogpost-title">{{myPosts.title}}</h5>
               <p class="blogpost-info">You posted this on
-                {{posts.date_created}}</p>
+                {{myPosts.date_created}}</p>
             </div>
-            <p class="blogpost-description">{{posts.contents}}</p>
+            <p class="blogpost-description">{{myPosts.contents}}</p>
           </div>
         </a>
       {{/each}}
@@ -28,7 +30,7 @@
         <input id="title-input" placeholder="Name your post">
         <p>Contents</p>
         <input id="contents-input" placeholder="Write your post here">
-        <button id="submit-blogpost-btn">Post</button>
+        <button id="submitBlogpostBtn">Post</button>
         <button id="cancel-blogpost-btn">Cancel</button>
     </form>
 </div>

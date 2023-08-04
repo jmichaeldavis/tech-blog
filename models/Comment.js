@@ -48,4 +48,4 @@ Comment.init(
   }
 );
 
-module.exports = Reminder;
+module.exports = Comment;

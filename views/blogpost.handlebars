@@ -1,16 +1,25 @@
 {{#if loggedIn}}
-<button onclick="location.href = 'http://localhost:3001'" class="btn return-btn">Return</button>
-<section class="single-blogpost">
+  <button
+    onclick="location.href = 'http://localhost:3005'"
+    class="btn return-btn"
+  >Return</button>
+  <section class="single-blogpost">
     <div class="blogpost-details">
-        <h3>{{post.title}}</h3>
-        <p class="single-blogpost-contents">{{post.contents}}</p>
+      <h3>{{blogPost.title}}</h3>
+      <p class="blogpost-info">Posted by
+        {{blogPost.user.name}}
+        on
+        {{blogPost.date_created}}</p>
+
+      <p class="single-blogpost-contents">{{blogPost.contents}}</p>
     </div>
     <div>
-        <button class="delete-btn btn btn-danger" data-id="{{post.id}}">Delete</button>
+      <button
+        class="delete-btn btn btn-danger"
+        data-id="{{blogPost.id}}"
+      >Delete</button>
     </div>
-</section>
+  </section>
 {{else}}
-<a href="/login">You must login first to view this page</a>
+  <a href="/login">You must login first to view this page</a>
 {{/if}}
-
-<script src="/js/singleReminder.js"></script>

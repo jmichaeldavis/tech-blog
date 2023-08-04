@@ -1,19 +1,12 @@
 const newBlogPostBtn = document.getElementById("new-blogpost-btn");
 const submitBlogPostBtn = document.getElementById("submit-blogpost-btn");
 const cancelBlogPostBtn = document.getElementById("cancel-blogpost-btn");
-const newBlogPostContainer = document.getElementById("new-blogpost-container")
-// const deleteBtn = document.getElementById("delete-btn");
-// const postId = deleteBtn.getAttribute('data-id');
-// const addDeleteEvent = function (button) {
-//     for (var i = 0; i < button.length; i++) {
-//         button[i].addEventListener('click', deleteReminder,
-//         )
-//     }
-// };
+const newBlogPostContainer = document.getElementById("new-blogpost-container");
+const returnHomeBtn = document.getElementById("return-home-btn");
 
-function  setBlogPostData() {
-  const blogPostTitle = document.getElementById("title-input").value
-  const blogPostContents = document.getElementById("contents-input").value
+function setBlogPostData() {
+  const blogPostTitle = document.getElementById("title-input").value;
+  const blogPostContents = document.getElementById("contents-input").value;
 
   const blogpostData = {
     title: blogPostTitle,
@@ -40,7 +33,6 @@ function  setBlogPostData() {
   return;
 }
 
-
 function hideNewBlogPostBtn() {
   newBlogPostBtn.style.display = "none";
 }
@@ -59,51 +51,48 @@ function closeForm() {
   showNewBlogPostBtn();
 }
 
-function returnHomePage() {
-  console.log("this is working");
-  document.location.replace("/");
-}
-
 const deleteBlogPost = function () {
   // fetch(`/api/blog-post/${postID}`, {
-    //     method: "DELETE",
-    // })
-    //     .then((response) => {
-      //         console.log(response);
-      //         // response.json())
-      
-      //     })
-      //     .catch((error) => {
-        //         console.error("Error:", error);
-        //     });
-        
-        // returnHomePage();
-        // return;
-        console.log("test");
-      };
+  //     method: "DELETE",
+  // })
+  //     .then((response) => {
+  //         console.log(response);
+  //         // response.json())
 
-      const delButtonHandler = async (event) => {
-        if (event.target.hasAttribute("data-id")) {
-          const id = event.target.getAttribute("data-id");
-      
-          const response = await fetch(`/api/blog-post/${id}`, {
-            method: "DELETE",
-          });
-      
-          if (response.ok) {
-            document.location.replace("/");
-          } else {
-            alert("Failed to delete blog post");
-          }
-        }
-      };
-      
-      submitBlogPostBtn.addEventListener("click", setBlogPostData);
-      
-      newBlogPostBtn.addEventListener("click", openForm);
-      
-      cancelBlogPostBtn.addEventListener("click", closeForm);
-      
-      // deleteBtn.addEventListener("click", deleteReminder);
-      // document.querySelector(".delete-btn").addEventListener("click", delButtonHandler);
-      
+  //     })
+  //     .catch((error) => {
+  //         console.error("Error:", error);
+  //     });
+
+  // returnHomePage();
+  // return;
+  console.log("test");
+};
+
+const delButtonHandler = async (event) => {
+  if (event.target.hasAttribute("data-id")) {
+    const id = event.target.getAttribute("data-id");
+
+    const response = await fetch(`/api/blog-post/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      document.location.replace("/");
+    } else {
+      alert("Failed to delete blog post");
+    }
+  }
+};
+
+const returnHomePage = function () {
+  document.location.replace("/");
+};
+
+returnHomeBtn.addEventListener("click", returnHomePage);
+
+document.querySelector("#submitBlogpostBtn").addEventListener("click", setBlogPostData);
+
+newBlogPostBtn.addEventListener("click", openForm);
+
+cancelBlogPostBtn.addEventListener("click", closeForm);

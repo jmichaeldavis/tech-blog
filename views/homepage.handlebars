@@ -1,16 +1,17 @@
       <div>
-        {{#if posts.length}}
+        {{#if blogPosts.length}}
+        <h2>All Blog Posts</h2>
         <div class="blogpost-card-container">
 
-          {{#each posts as |posts|}}
+          {{#each blogPosts as |blogPosts|}}
           <a class="blogpost-card" href="/blog-post/{{id}}">
             <div class="blogpost-container">
               <div>
-                <h5 class="blogpost-title">{{posts.title}}</h5>
-                <p class="blogpost-info">Posted by {{posts.user}} on {{posts.date_created}}</p>
+                <h5 class="blogpost-title">{{blogPosts.title}}</h5>
+                <p class="blogpost-info">Posted by {{blogPosts.user.name}} on {{blogPosts.date_created}}</p>
               </div>
 
-              <p class="blogpost-description">{{posts.contents}}</p>
+              <p class="blogpost-description">{{blogPosts.contents}}</p>
             </div>
           </a>
           {{/each}}
@@ -18,5 +19,3 @@
         {{/if}}
       </div>
 
-
-<script src="/js/blogpost.js"></script>
