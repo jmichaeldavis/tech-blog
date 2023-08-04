@@ -33,24 +33,6 @@ function setBlogPostData() {
   return;
 }
 
-function hideNewBlogPostBtn() {
-  newBlogPostBtn.style.display = "none";
-}
-
-function showNewBlogPostBtn() {
-  newBlogPostBtn.style.display = "block";
-}
-
-function openForm() {
-  newBlogPostContainer.style.display = "block";
-  hideNewBlogPostBtn();
-}
-
-function closeForm() {
-  newBlogPostContainer.style.display = "none";
-  showNewBlogPostBtn();
-}
-
 const deleteBlogPost = function () {
   // fetch(`/api/blog-post/${postID}`, {
   //     method: "DELETE",
@@ -93,6 +75,3 @@ returnHomeBtn.addEventListener("click", returnHomePage);
 
 document.querySelector("#submitBlogpostBtn").addEventListener("click", setBlogPostData);
 
-newBlogPostBtn.addEventListener("click", openForm);
-
-cancelBlogPostBtn.addEventListener("click", closeForm);
